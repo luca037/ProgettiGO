@@ -6,24 +6,31 @@ import (
     "time"
 )
 
-// cucina n torte
-func cook(wg *sync.WaitGroup, cooked chan<- byte, n int) {
-    var b byte = 'A'
-    for i := 0; i < n; i++ {
+type cake struct {
+    name string
+    isCooked bool
+    isGarnished bool
+    isDecorated bool
+}
+
+// cucina le torte passate
+func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
+    for i := range(cakes) {
         time.Sleep(time.Second)
-        fmt.Printf("%c -> cucinata\n", b)
-        cooked <- b
-        b++
+        cakes[i].isCooked = true
+        fmt.Printf("%s -> cucinata\n", cakes[i].name)
+        cooked <- &cakes[i]
     }
     close(cooked)
     wg.Done()
 }
 
 // decora le torte passate da cook
-func garnish(wg *sync.WaitGroup, cooked <-chan byte, toDecorate chan<- byte) {
+func garnish(wg *sync.WaitGroup, cooked <-chan *cake, toDecorate chan<- *cake) {
     for c := range(cooked) {
         time.Sleep(2 * time.Second)
-        fmt.Printf("%c -> guarnita \n", c)
+        c.isGarnished = true
+        fmt.Printf("%s -> guarnita \n", c.name)
         toDecorate <- c
     }
     close(toDecorate)
@@ -31,21 +38,28 @@ func garnish(wg *sync.WaitGroup, cooked <-chan byte, toDecorate chan<- byte) {
 }
 
 // decora le torte passate da garnish
-func decorate(wg *sync.WaitGroup, toDecorate <-chan byte) {
+func decorate(wg *sync.WaitGroup, toDecorate <-chan *cake) {
     for c := range(toDecorate) {
         time.Sleep(4 * time.Second)
-        fmt.Printf("%c -> decorata\n", c)
+        c.isDecorated = true
+        fmt.Printf("%s -> decorata\n", c.name)
     }
     wg.Done()
 }
 
 func main() {
-    cooked := make(chan byte, 2) // torte cucinate
-    toDecorate := make(chan byte, 2) // torte da decorare
+    // alloco 5 torte
+    cakes := make([]cake, 5)
+    for i := range(cakes) {
+        cakes[i].name = string('A' + i)
+    }
+
+    cooked := make(chan *cake, 2) // torte cucinate
+    toDecorate := make(chan *cake, 2) // torte da decorare
 
     var wg sync.WaitGroup
     wg.Add(3)
-    go cook(&wg, cooked, 5)
+    go cook(&wg, cooked, cakes)
     go garnish(&wg, cooked, toDecorate)
     go decorate(&wg, toDecorate)
     wg.Wait()

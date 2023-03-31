@@ -5,6 +5,7 @@ import (
     "sync"
 )
 
+// ritorna il numero di corrispondenze trovate
 func char_count(word string, c byte, res chan<- int) {
     var wg sync.WaitGroup
     ch := make(chan byte, len(word))
@@ -25,16 +26,20 @@ func char_count(word string, c byte, res chan<- int) {
 }
 
 func main() {
-    var word string = "aaaaaaaaaaaaabbbbbbbbcccccddddccccccfff"
-    var char byte = 'c'
+    var word string
+    fmt.Println("inserire una parola:")
+    fmt.Scanln(&word)
+
+    var char []byte
+    fmt.Println("inserire un carattere:")
+    fmt.Scanln(&char)
 
     res := make(chan int)
 
-    go char_count(word, char, res)
+    go char_count(word, char[0], res)
     count := <- res
 
-    fmt.Println("word =", word)
-    fmt.Printf("character '%c' appears %d times\n", char, count)
+    fmt.Printf("il appare '%c' appare %d volta/e\n", char[0], count)
 }
 
 // cose che si possono aggiungere:

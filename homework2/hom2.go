@@ -90,9 +90,9 @@ func main() {
         clients[i].name = string(i + 65) // 'A' = 65
     }
 
-    var wg sync.WaitGroup
     data := make(chan vehicleType, 10) // per i nolleggi
 
+    var wg sync.WaitGroup
     wg.Add(2)
     go accountant(&wg, data)
     go carRental(&wg, data, clients)

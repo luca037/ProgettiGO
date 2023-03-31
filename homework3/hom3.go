@@ -1,9 +1,9 @@
 package main
 
 import (
-    "fmt"
     "sync"
     "time"
+    "log"
 )
 
 type cake struct {
@@ -18,7 +18,7 @@ func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
     for i := range(cakes) {
         time.Sleep(time.Second)
         cakes[i].isCooked = true
-        fmt.Printf("%s -> cucinata\n", cakes[i].name)
+        log.Printf("%s -> cucinata\n", cakes[i].name)
         cooked <- &cakes[i]
     }
     close(cooked)
@@ -26,14 +26,14 @@ func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
 }
 
 // decora le torte passate da cook
-func garnish(wg *sync.WaitGroup, cooked <-chan *cake, toDecorate chan<- *cake) {
+func garnish(wg *sync.WaitGroup, cooked <-chan *cake, garnished chan<- *cake) {
     for c := range(cooked) {
         time.Sleep(2 * time.Second)
         c.isGarnished = true
-        fmt.Printf("%s -> guarnita \n", c.name)
-        toDecorate <- c
+        log.Printf("%s -> guarnita \n", c.name)
+        garnished <- c
     }
-    close(toDecorate)
+    close(garnished)
     wg.Done()
 }
 
@@ -42,7 +42,7 @@ func decorate(wg *sync.WaitGroup, toDecorate <-chan *cake) {
     for c := range(toDecorate) {
         time.Sleep(4 * time.Second)
         c.isDecorated = true
-        fmt.Printf("%s -> decorata\n", c.name)
+        log.Printf("%s -> decorata\n", c.name)
     }
     wg.Done()
 }
@@ -55,19 +55,15 @@ func main() {
     }
 
     cooked := make(chan *cake, 2) // torte cucinate
-    toDecorate := make(chan *cake, 2) // torte da decorare
+    garnished := make(chan *cake, 2) // torte da decorare
 
     var wg sync.WaitGroup
     wg.Add(3)
     go cook(&wg, cooked, cakes)
-    go garnish(&wg, cooked, toDecorate)
-    go decorate(&wg, toDecorate)
+    go garnish(&wg, cooked, garnished)
+    go decorate(&wg, garnished)
     wg.Wait()
 }
 
-/*
-cose che si possono aggiungere:
-    struct cake con 3 campi booleani che identificano le 3 fasi e nome della torta
-    slice di cake stile homework 2 nel main
-    stampa non in sequenza ma stile tabella
-*/
+/* cose che si possono aggiungere:
+ * output */

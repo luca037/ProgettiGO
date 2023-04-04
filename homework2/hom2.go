@@ -10,7 +10,7 @@ import (
 // rappresnta il cliente di un autonoleggio
 type client struct {
     name string
-    car vehicle
+    car vehicle // veicolo prenotato
 }
 
 // rappresenta un veicolo
@@ -98,3 +98,6 @@ func main() {
     go carRental(&wg, data, clients)
     wg.Wait()
 }
+
+// cose da fare:
+// sellers o agents?

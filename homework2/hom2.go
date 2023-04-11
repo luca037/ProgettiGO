@@ -36,10 +36,11 @@ func (cl *client) String() string {
         ctn = "Berlina"
     case StationWagon:
         ctn = "Station Wagon"
+    default:
+        ctn = ""
     }
     return fmt.Sprintf("name: %s, ha noleggiato un veicolo di tipo: %s", cl.name, ctn)
 }
-
 
 // gestisce il noleggio auto dei clienti passati
 func carRental(wg *sync.WaitGroup, data chan vehicleType, clients []client) {
@@ -55,7 +56,7 @@ func carRental(wg *sync.WaitGroup, data chan vehicleType, clients []client) {
 
 // associa un tipo di veicolo random al cliente
 func rent(wg *sync.WaitGroup, data chan<- vehicleType, cl *client) {
-    rnd := rand.Intn(3) // random tra 0 e 3
+    rnd := rand.Intn(3) // random tra 0 e 2
     cl.car = vehicle{vt: vehicleType(rnd)}
     data <- cl.car.vt
     fmt.Println(cl)
@@ -101,3 +102,4 @@ func main() {
 
 // cose da fare:
 // sellers o agents?
+// random tra 0 e 2 o 0 e 3?

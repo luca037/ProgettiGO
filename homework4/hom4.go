@@ -13,11 +13,11 @@ import (
 // se il canale non è vuoto, viene aggiornato il valore contenuto
 func generateValute(wg *sync.WaitGroup, ch chan float32, min, max float32, res *float32) {
     if len(ch) != 0 { // se il canale non è vuoto
-        <- ch // scarto il valore presente
+        <- ch // scarto il valore presente (per mantenere i valori sempre aggiornati)
     } 
     rnd := randFloat32(min, max)
-    *res = rnd
-    ch <- rnd
+    *res = rnd // per poter stampare il valore delle valute correnti
+    ch <- rnd 
     wg.Done()
 }
 

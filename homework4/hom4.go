@@ -9,14 +9,27 @@ import (
     "math/rand"
 )
 
-// genera un cambio di valuta randomico nel range [min, max] e lo invia nel canale
-// se il canale non è vuoto, viene aggiornato il valore contenuto
-func generateValute(wg *sync.WaitGroup, ch chan float32, min, max float32, res *float32) {
+// durata simulazione
+const simulationDuration = 60
+
+// soglie sopra/sotto le quali vendere/acquistare
+const sellTresholdEurUsd float32 = 1.20
+const buyTresholdGbpUsd float32 = 1.35
+const buyTresholdJpyUsd float32 = 0.0085
+
+type marketCurrencies struct {
+    eur_usd, gbp_usd, jpy_usd chan float32
+}
+
+// genera un cambio di valuta randomico nel range [min, max] e lo invia nel
+// canale passato; scarta l'ultimo valore inserito nel channel per mantenere 
+// la valuta aggiornata; scrive il valore generato in res
+func generateCurrencie(wg *sync.WaitGroup, ch chan float32, min, max float32, res *float32) {
     if len(ch) != 0 { // se il canale non è vuoto
-        <- ch // scarto il valore presente (per mantenere i valori sempre aggiornati)
+        <- ch
     } 
     rnd := randFloat32(min, max)
-    *res = rnd // per poter stampare il valore delle valute correnti
+    *res = rnd
     ch <- rnd 
     wg.Done()
 }
@@ -28,42 +41,42 @@ func randFloat32(min, max float32) float32 {
 
 // simula l'andamento di un mercato per tot secondi;
 // le valute vengono aggiornate ogni secondo
-func simulateMarketData(wg *sync.WaitGroup, eur_usd, gbp_usd, jpy_usd chan float32, sec int, done *atomic.Bool) {
+func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, done *atomic.Bool) {
     var senders sync.WaitGroup
     var eu, gu, ju float32
     for i := 0; i < sec; i++ { // inizio simulazione
         senders.Add(3)
-        go generateValute(&senders, eur_usd, 1.0, 1.5, &eu)
-        go generateValute(&senders, gbp_usd, 1.0, 1.5, &gu)
-        go generateValute(&senders, jpy_usd, 0.006, 0.009, &ju)
+        go generateCurrencie(&senders, curr.eur_usd, 1.0, 1.5, &eu)
+        go generateCurrencie(&senders, curr.gbp_usd, 1.0, 1.5, &gu)
+        go generateCurrencie(&senders, curr.jpy_usd, 0.006, 0.009, &ju)
         senders.Wait()
         time.Sleep(time.Second)
         log.Printf("\tcambi valute correnti: eu = %v, gu = %v, ju = %v", eu, gu, ju)
     }
-    done.Store(true) // faccio terminare selectPair
-    close(eur_usd)
-    close(gbp_usd)
-    close(jpy_usd)
+    // chiudo la ricezione
+    done.Store(true)
+    close(curr.eur_usd)
+    close(curr.gbp_usd)
+    close(curr.jpy_usd)
     wg.Done()
 }
 
-// algoritmo che cattura le variazioni di prezzo e 
-// decide se vendere o acquistare
-func selectPair(wg *sync.WaitGroup, eur_usd, gbp_usd, jpy_usd <-chan float32, done *atomic.Bool) {
+// algoritmo che cattura le variazioni di prezzo e decide se vendere o acquistare
+func selectPair(wg *sync.WaitGroup, curr *marketCurrencies, done *atomic.Bool) {
     for !done.Load() {
         select {
-        case x := <- eur_usd:
-            if x > 1.20 {
+        case x := <- curr.eur_usd:
+            if x > sellTresholdEurUsd {
                 time.Sleep(4 * time.Second)
                 log.Println("VENDUTI eur_usd dal valore di ", x)
             }
-        case x := <- gbp_usd:
-            if x < 1.35 {
+        case x := <- curr.gbp_usd:
+            if x < buyTresholdGbpUsd {
                 time.Sleep(3 * time.Second)
                 log.Println("ACQUISTATI gbp_usd dal valore di", x)
             }
-        case x := <- jpy_usd:
-            if x < 0.0085 {
+        case x := <- curr.jpy_usd:
+            if x < buyTresholdJpyUsd {
                 time.Sleep(3 * time.Second)
                 log.Println("ACQUISTATI jpy_usd dal valore di", x)
             }
@@ -73,26 +86,28 @@ func selectPair(wg *sync.WaitGroup, eur_usd, gbp_usd, jpy_usd <-chan float32, do
 }
 
 func main() {
-    rand.Seed(time.Now().UnixNano())
+    rand.Seed(time.Now().UnixNano()) // per la randomicità
 
-    var done atomic.Bool // utilizzata per interrompere la ricezione di selectPair
+    var done atomic.Bool // per far terminare il thread selectPair
     done.Store(false)
 
-    eur_usd := make(chan float32, 1)
-    gbp_usd := make(chan float32, 1)
-    jpy_usd := make(chan float32, 1)
+    curr := marketCurrencies{
+        eur_usd: make(chan float32, 1),
+        gbp_usd: make(chan float32, 1),
+        jpy_usd: make(chan float32, 1),
+    }
 
     fmt.Println("#### INIZIO SIMULAZIONE ####")
     var wg sync.WaitGroup
     wg.Add(2)
-    go simulateMarketData(&wg, eur_usd, gbp_usd, jpy_usd, 60, &done)
-    go selectPair(&wg, eur_usd, gbp_usd, jpy_usd, &done)
+    go simulateMarketData(&wg, &curr, simulationDuration, &done)
+    go selectPair(&wg, &curr, &done)
     wg.Wait()
     fmt.Println("#### FINE SIMULAZIONE ####")
 }
 
 // da fixare:
-// pulire il codice
+// simulare un possibile guadagno
 
 // fatti:
 // come chiudere correttamente la goroutine del select;
@@ -100,3 +115,4 @@ func main() {
 // gli acquisti e le vendite non vengono effettuate con i valori più recenti;
 // controllare se questa variante funziona;
 // aggiungere un metodo per stampare le valute correnti;
+// camibiare nome struct e variabile 'valute'

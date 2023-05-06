@@ -4,6 +4,9 @@ Progetti (homework) assegnati da scrivere in Go.
 ## Homework 1: conta caratteri in una stringa
 Il programma chiede in input all'utente una stringa e un carattere, in output verrà restituito il numero di volte in cui appare tale carattere nella parola.
 
+Per ogni carattere della stringa viene lanciata una goroutine. Ogni goroutine effettua un semplice confronto tra due caratteri e inserisce in un channel il risultato.
+Il numero di volte in cui appare il carattere specificato all'interno della parola fornita corrsiponde alla lunghezza del channel.
+
 ## Homework 2: car rental
 Il programma genera una lista di clienti e associa casualmente ad ognuno di essi un tipo di veicolo tra tre tipologie: SUV, Berlina e Station Wagon. Successivamente il programma conta quanti veicoli sono stati noleggiati per ciascuna tipologia e stampa un resoconto finale.
 

@@ -9,7 +9,7 @@ import (
 func char_count(word string, c byte, res chan<- int) {
     var wg sync.WaitGroup
     ch := make(chan byte, len(word))
-
+    // controllo caratteri in parallelo
     for i := range(word) {
         wg.Add(1)
         go func(x byte) {
@@ -19,7 +19,6 @@ func char_count(word string, c byte, res chan<- int) {
             wg.Done()
         }(word[i])
     }
-
     wg.Wait()
     close(ch)
     res <- len(ch)
@@ -35,12 +34,10 @@ func main() {
     fmt.Scanln(&char)
 
     res := make(chan int)
-
     go char_count(word, char[0], res)
     count := <- res
 
-    fmt.Printf("il appare '%c' appare %d volta/e\n", char[0], count)
+    fmt.Printf("il carattere '%c' appare %d volta/e\n", char[0], count)
 }
 
-// cose che si possono aggiungere:
-// input da utente 
+// i caratteri speciali non funzionano

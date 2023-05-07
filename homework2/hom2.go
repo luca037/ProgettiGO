@@ -76,9 +76,10 @@ func accountant(wg *sync.WaitGroup, data <-chan vehicleType) {
             sw++
         }
     }
-    fmt.Println("numero totale di SUV =", s)
-    fmt.Println("numero totale di Berline =", b)
-    fmt.Println("numero totale di Station Wagon=", sw)
+    fmt.Println("\n#### RESOCONTO FINALE ####",
+                "\nnumero totale di SUV =", s, 
+                "\nnumero totale di Berline =", b, 
+                "\nnumero totale di Station Wagon =", sw)
     wg.Done()
 }
 
@@ -88,7 +89,7 @@ func main() {
     // alloco 10 clienti
     clients := make([]client, 10)
     for i := range(clients) {
-        clients[i].name = string(i + 65) // 'A' = 65
+        clients[i].name = string('A' + i) 
     }
 
     data := make(chan vehicleType, 10) // per i nolleggi

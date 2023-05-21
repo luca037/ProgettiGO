@@ -56,7 +56,7 @@ func carRental(wg *sync.WaitGroup, data chan vehicleType, clients []client) {
 
 // associa un tipo di veicolo random al cliente
 func rent(wg *sync.WaitGroup, data chan<- vehicleType, cl *client) {
-    rnd := rand.Intn(3) // random tra 0 e 2
+    rnd := rand.Intn(3) // random tra [0, 3[
     cl.car = vehicle{vt: vehicleType(rnd)}
     data <- cl.car.vt
     fmt.Println(cl)
@@ -65,7 +65,7 @@ func rent(wg *sync.WaitGroup, data chan<- vehicleType, cl *client) {
 
 // conteggio auto nolleggiete per tipo e stampa resoconto finale
 func accountant(wg *sync.WaitGroup, data <-chan vehicleType) {
-    s, b, sw := 0, 0, 0
+    s, b, sw := 0, 0, 0 // contatori
     for i := range(data) { // aspetta la chiusura del channel
         switch i { // filtra in base al tipo di veicolo
         case SUV:

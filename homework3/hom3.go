@@ -52,7 +52,7 @@ func decorate(wg *sync.WaitGroup, toDecorate <-chan *cake) {
 func main() {
     // alloco 5 torte
     cakes := make([]cake, 5)
-    for i, name := range []string{"Tiramisù", "Sacher", "Cheesecake", "Crostata", "Meringata"}{
+    for i, name := range []string{"Tiramisù", "Sacher", "Cheesecake", "Crostata", "Meringata"} {
         cakes[i].name = name
     }
 

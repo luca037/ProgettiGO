@@ -34,7 +34,7 @@ func generateCurrencie(wg *sync.WaitGroup, ch chan float32, min, max float32, re
 
 // random number generator nel range [min, max]
 func randFloat32(min, max float32) float32 {
-    return min + rand.Float32()*(max-min)
+    return min + rand.Float32() * (max - min)
 }
 
 // simula l'andamento di un mercato per tot secondi, le valute vengono aggiornate
@@ -51,7 +51,7 @@ func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, don
         go generateCurrencie(&senders, curr.jpy_usd, 0.006, 0.009, &j_u)
         senders.Wait()
         time.Sleep(time.Second)
-        log.Printf("\tcambi valute correnti: eu = %v, gu = %v, ju = %v", e_u, g_u, j_u)
+        log.Printf("\tcambi valute correnti: EUR/USD = %v, GBP/USD = %v, JPY/USD = %v", e_u, g_u, j_u)
     }
 
     // chiudo la ricezione
@@ -62,24 +62,24 @@ func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, don
     wg.Done()
 }
 
-// algoritmo che cattura le variazioni di prezzo e decide se vendere o acquistare
+// cattura le variazioni di prezzo e decide se vendere o acquistare
 func selectPair(wg *sync.WaitGroup, curr *marketCurrencies, done *atomic.Bool) {
     for !done.Load() {
         select {
         case x := <-curr.eur_usd:
             if x > sellTresholdEurUsd {
                 time.Sleep(4 * time.Second)
-                log.Println("VENDUTI eur_usd dal valore di ", x)
+                log.Println("VENDUTI EUR/USD dal valore di ", x)
             }
         case x := <-curr.gbp_usd:
             if x < buyTresholdGbpUsd {
                 time.Sleep(3 * time.Second)
-                log.Println("ACQUISTATI gbp_usd dal valore di", x)
+                log.Println("ACQUISTATI GBP/USD dal valore di", x)
             }
         case x := <-curr.jpy_usd:
             if x < buyTresholdJpyUsd {
                 time.Sleep(3 * time.Second)
-                log.Println("ACQUISTATI jpy_usd dal valore di", x)
+                log.Println("ACQUISTATI JPY/USD dal valore di", x)
             }
         }
     }

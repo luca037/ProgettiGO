@@ -99,84 +99,84 @@ go run homework/hom4.go
 Un possibile output:
 ```
 #### INIZIO SIMULAZIONE ####
-2023/05/25 09:48:14 	cambi valute correnti: eu = 1.1375136, gu = 1.3560054, ju = 0.0061043403
-2023/05/25 09:48:15 	cambi valute correnti: eu = 1.2106149, gu = 1.335802, ju = 0.0064044604
-2023/05/25 09:48:16 ACQUISTATI jpy_usd dal valore di 0.0061043403
-2023/05/25 09:48:16 	cambi valute correnti: eu = 1.3550076, gu = 1.0719882, ju = 0.007801777
-2023/05/25 09:48:17 	cambi valute correnti: eu = 1.3850348, gu = 1.4206336, ju = 0.0084509775
-2023/05/25 09:48:18 	cambi valute correnti: eu = 1.4633, gu = 1.3954339, ju = 0.0075907717
-2023/05/25 09:48:19 ACQUISTATI jpy_usd dal valore di 0.007801777
-2023/05/25 09:48:19 	cambi valute correnti: eu = 1.4994874, gu = 1.2894232, ju = 0.007982291
-2023/05/25 09:48:20 	cambi valute correnti: eu = 1.1411515, gu = 1.0407734, ju = 0.007857163
-2023/05/25 09:48:21 	cambi valute correnti: eu = 1.3348676, gu = 1.2869891, ju = 0.0061860853
-2023/05/25 09:48:22 ACQUISTATI gbp_usd dal valore di 1.2894232
-2023/05/25 09:48:22 	cambi valute correnti: eu = 1.2166119, gu = 1.4125242, ju = 0.007873127
-2023/05/25 09:48:23 	cambi valute correnti: eu = 1.3648001, gu = 1.0271416, ju = 0.008059705
-2023/05/25 09:48:24 	cambi valute correnti: eu = 1.1982994, gu = 1.2963296, ju = 0.0068917326
-2023/05/25 09:48:25 	cambi valute correnti: eu = 1.0115014, gu = 1.158614, ju = 0.007199998
-2023/05/25 09:48:26 VENDUTI eur_usd dal valore di  1.2166119
-2023/05/25 09:48:26 	cambi valute correnti: eu = 1.4801215, gu = 1.0715704, ju = 0.00812907
-2023/05/25 09:48:27 	cambi valute correnti: eu = 1.4198802, gu = 1.0237627, ju = 0.007595646
-2023/05/25 09:48:28 	cambi valute correnti: eu = 1.3826247, gu = 1.2067677, ju = 0.0066298395
-2023/05/25 09:48:29 ACQUISTATI jpy_usd dal valore di 0.00812907
-2023/05/25 09:48:29 	cambi valute correnti: eu = 1.2944713, gu = 1.3255829, ju = 0.0075440365
-2023/05/25 09:48:30 	cambi valute correnti: eu = 1.4062635, gu = 1.3500912, ju = 0.0063363602
-2023/05/25 09:48:31 	cambi valute correnti: eu = 1.3048805, gu = 1.3441882, ju = 0.007960531
-2023/05/25 09:48:32 	cambi valute correnti: eu = 1.181304, gu = 1.0756094, ju = 0.006289613
-2023/05/25 09:48:33 VENDUTI eur_usd dal valore di  1.2944713
-2023/05/25 09:48:33 	cambi valute correnti: eu = 1.2855392, gu = 1.1201105, ju = 0.006114744
-2023/05/25 09:48:34 	cambi valute correnti: eu = 1.1169662, gu = 1.4319285, ju = 0.00842892
-2023/05/25 09:48:35 	cambi valute correnti: eu = 1.1751478, gu = 1.4589779, ju = 0.008282999
-2023/05/25 09:48:36 ACQUISTATI gbp_usd dal valore di 1.1201105
-2023/05/25 09:48:36 	cambi valute correnti: eu = 1.1672595, gu = 1.1315778, ju = 0.0076555945
-2023/05/25 09:48:37 	cambi valute correnti: eu = 1.4999561, gu = 1.3567895, ju = 0.0063115424
-2023/05/25 09:48:38 	cambi valute correnti: eu = 1.3593135, gu = 1.0084704, ju = 0.007583429
-2023/05/25 09:48:39 ACQUISTATI gbp_usd dal valore di 1.1315778
-2023/05/25 09:48:39 	cambi valute correnti: eu = 1.1321442, gu = 1.1209955, ju = 0.008232256
-2023/05/25 09:48:40 	cambi valute correnti: eu = 1.3970907, gu = 1.3771405, ju = 0.008250034
-2023/05/25 09:48:41 	cambi valute correnti: eu = 1.0478239, gu = 1.0050796, ju = 0.00749947
-2023/05/25 09:48:42 ACQUISTATI gbp_usd dal valore di 1.1209955
-2023/05/25 09:48:42 	cambi valute correnti: eu = 1.0629406, gu = 1.1632893, ju = 0.007295221
-2023/05/25 09:48:43 	cambi valute correnti: eu = 1.4281111, gu = 1.4948357, ju = 0.0079836985
-2023/05/25 09:48:44 	cambi valute correnti: eu = 1.339742, gu = 1.428214, ju = 0.008964181
-2023/05/25 09:48:45 ACQUISTATI gbp_usd dal valore di 1.1632893
-2023/05/25 09:48:45 	cambi valute correnti: eu = 1.3637974, gu = 1.3510185, ju = 0.0064040506
-2023/05/25 09:48:46 	cambi valute correnti: eu = 1.3146775, gu = 1.3555107, ju = 0.007743306
-2023/05/25 09:48:47 	cambi valute correnti: eu = 1.1423194, gu = 1.0362158, ju = 0.00873218
-2023/05/25 09:48:48 	cambi valute correnti: eu = 1.1404585, gu = 1.0926083, ju = 0.007940724
-2023/05/25 09:48:49 VENDUTI eur_usd dal valore di  1.3637974
-2023/05/25 09:48:49 	cambi valute correnti: eu = 1.1720312, gu = 1.3889098, ju = 0.0062687765
-2023/05/25 09:48:50 	cambi valute correnti: eu = 1.2184954, gu = 1.1632792, ju = 0.0071361503
-2023/05/25 09:48:51 	cambi valute correnti: eu = 1.0952806, gu = 1.0398113, ju = 0.0061183465
-2023/05/25 09:48:52 ACQUISTATI jpy_usd dal valore di 0.0062687765
-2023/05/25 09:48:52 	cambi valute correnti: eu = 1.4562006, gu = 1.1920387, ju = 0.0068379464
-2023/05/25 09:48:53 	cambi valute correnti: eu = 1.184744, gu = 1.0338442, ju = 0.006085027
-2023/05/25 09:48:54 	cambi valute correnti: eu = 1.1405873, gu = 1.1415616, ju = 0.008710688
-2023/05/25 09:48:55 ACQUISTATI jpy_usd dal valore di 0.0068379464
-2023/05/25 09:48:55 	cambi valute correnti: eu = 1.0178804, gu = 1.0281926, ju = 0.007255404
-2023/05/25 09:48:56 	cambi valute correnti: eu = 1.1178433, gu = 1.2029566, ju = 0.008434286
-2023/05/25 09:48:57 	cambi valute correnti: eu = 1.2862812, gu = 1.464122, ju = 0.007617614
-2023/05/25 09:48:58 ACQUISTATI jpy_usd dal valore di 0.007255404
-2023/05/25 09:48:58 	cambi valute correnti: eu = 1.2668915, gu = 1.3140037, ju = 0.0073556066
-2023/05/25 09:48:59 	cambi valute correnti: eu = 1.1536313, gu = 1.0255777, ju = 0.0068495874
-2023/05/25 09:49:00 	cambi valute correnti: eu = 1.4771202, gu = 1.2436935, ju = 0.006812117
-2023/05/25 09:49:01 ACQUISTATI jpy_usd dal valore di 0.0073556066
-2023/05/25 09:49:01 	cambi valute correnti: eu = 1.4524262, gu = 1.4157887, ju = 0.0062013073
-2023/05/25 09:49:02 	cambi valute correnti: eu = 1.1467671, gu = 1.3443596, ju = 0.006425267
-2023/05/25 09:49:03 	cambi valute correnti: eu = 1.2351564, gu = 1.1011885, ju = 0.0060503054
-2023/05/25 09:49:04 	cambi valute correnti: eu = 1.4543861, gu = 1.35691, ju = 0.0069618234
-2023/05/25 09:49:05 VENDUTI eur_usd dal valore di  1.4524262
-2023/05/25 09:49:05 	cambi valute correnti: eu = 1.4398787, gu = 1.3728697, ju = 0.0063622263
-2023/05/25 09:49:06 	cambi valute correnti: eu = 1.3614022, gu = 1.1110493, ju = 0.007017688
-2023/05/25 09:49:07 	cambi valute correnti: eu = 1.3958352, gu = 1.4312605, ju = 0.008918559
-2023/05/25 09:49:08 ACQUISTATI jpy_usd dal valore di 0.0063622263
-2023/05/25 09:49:08 	cambi valute correnti: eu = 1.2925277, gu = 1.1583073, ju = 0.0060373805
-2023/05/25 09:49:09 	cambi valute correnti: eu = 1.0587523, gu = 1.0318178, ju = 0.0073924763
-2023/05/25 09:49:10 	cambi valute correnti: eu = 1.0094571, gu = 1.0942079, ju = 0.006774799
-2023/05/25 09:49:11 	cambi valute correnti: eu = 1.2334626, gu = 1.2981997, ju = 0.0060218875
-2023/05/25 09:49:12 VENDUTI eur_usd dal valore di  1.2925277
-2023/05/25 09:49:12 	cambi valute correnti: eu = 1.4424216, gu = 1.1128485, ju = 0.0082476
-2023/05/25 09:49:13 	cambi valute correnti: eu = 1.2016089, gu = 1.1921993, ju = 0.008551516
-2023/05/25 09:49:15 ACQUISTATI gbp_usd dal valore di 1.1128485
+2023/05/28 17:16:23 	cambi valute correnti: EUR/USD = 1.090255, GBP/USD = 1.4743164, JPY/USD = 0.008893158
+2023/05/28 17:16:24 	cambi valute correnti: EUR/USD = 1.237488, GBP/USD = 1.4857941, JPY/USD = 0.006895312
+2023/05/28 17:16:25 	cambi valute correnti: EUR/USD = 1.0315063, GBP/USD = 1.3790376, JPY/USD = 0.008208969
+2023/05/28 17:16:26 ACQUISTATI JPY/USD dal valore di 0.006895312
+2023/05/28 17:16:26 	cambi valute correnti: EUR/USD = 1.1794821, GBP/USD = 1.151135, JPY/USD = 0.006642764
+2023/05/28 17:16:27 	cambi valute correnti: EUR/USD = 1.1552612, GBP/USD = 1.3761103, JPY/USD = 0.007384676
+2023/05/28 17:16:28 	cambi valute correnti: EUR/USD = 1.402172, GBP/USD = 1.0393479, JPY/USD = 0.008901599
+2023/05/28 17:16:29 ACQUISTATI GBP/USD dal valore di 1.151135
+2023/05/28 17:16:29 	cambi valute correnti: EUR/USD = 1.1276011, GBP/USD = 1.2371044, JPY/USD = 0.0069815367
+2023/05/28 17:16:30 	cambi valute correnti: EUR/USD = 1.3131588, GBP/USD = 1.3325305, JPY/USD = 0.008038612
+2023/05/28 17:16:31 	cambi valute correnti: EUR/USD = 1.482144, GBP/USD = 1.0112741, JPY/USD = 0.0072546685
+2023/05/28 17:16:32 ACQUISTATI GBP/USD dal valore di 1.2371044
+2023/05/28 17:16:32 	cambi valute correnti: EUR/USD = 1.2351931, GBP/USD = 1.1765357, JPY/USD = 0.008534676
+2023/05/28 17:16:33 	cambi valute correnti: EUR/USD = 1.4945828, GBP/USD = 1.1504409, JPY/USD = 0.006278705
+2023/05/28 17:16:34 	cambi valute correnti: EUR/USD = 1.3650668, GBP/USD = 1.3464973, JPY/USD = 0.008606613
+2023/05/28 17:16:35 	cambi valute correnti: EUR/USD = 1.0021929, GBP/USD = 1.4970922, JPY/USD = 0.008541149
+2023/05/28 17:16:36 VENDUTI EUR/USD dal valore di  1.2351931
+2023/05/28 17:16:36 	cambi valute correnti: EUR/USD = 1.157764, GBP/USD = 1.4245199, JPY/USD = 0.0078030657
+2023/05/28 17:16:37 	cambi valute correnti: EUR/USD = 1.3113414, GBP/USD = 1.1275012, JPY/USD = 0.007579696
+2023/05/28 17:16:38 	cambi valute correnti: EUR/USD = 1.3999696, GBP/USD = 1.370509, JPY/USD = 0.007321366
+2023/05/28 17:16:39 ACQUISTATI JPY/USD dal valore di 0.0078030657
+2023/05/28 17:16:39 	cambi valute correnti: EUR/USD = 1.3341286, GBP/USD = 1.0479048, JPY/USD = 0.0070166457
+2023/05/28 17:16:40 	cambi valute correnti: EUR/USD = 1.2257991, GBP/USD = 1.1473099, JPY/USD = 0.0072492273
+2023/05/28 17:16:41 	cambi valute correnti: EUR/USD = 1.3766727, GBP/USD = 1.2012546, JPY/USD = 0.0071013644
+2023/05/28 17:16:42 	cambi valute correnti: EUR/USD = 1.2570184, GBP/USD = 1.4235327, JPY/USD = 0.008791863
+2023/05/28 17:16:43 VENDUTI EUR/USD dal valore di  1.3341286
+2023/05/28 17:16:43 	cambi valute correnti: EUR/USD = 1.0744866, GBP/USD = 1.3924919, JPY/USD = 0.006564118
+2023/05/28 17:16:44 	cambi valute correnti: EUR/USD = 1.2073885, GBP/USD = 1.0854852, JPY/USD = 0.0071486672
+2023/05/28 17:16:45 	cambi valute correnti: EUR/USD = 1.4110394, GBP/USD = 1.1830978, JPY/USD = 0.0064241635
+2023/05/28 17:16:46 ACQUISTATI JPY/USD dal valore di 0.006564118
+2023/05/28 17:16:46 	cambi valute correnti: EUR/USD = 1.1708325, GBP/USD = 1.3056486, JPY/USD = 0.006407966
+2023/05/28 17:16:47 	cambi valute correnti: EUR/USD = 1.4982027, GBP/USD = 1.4750392, JPY/USD = 0.0076837894
+2023/05/28 17:16:48 	cambi valute correnti: EUR/USD = 1.3888762, GBP/USD = 1.0188625, JPY/USD = 0.0069191414
+2023/05/28 17:16:49 ACQUISTATI JPY/USD dal valore di 0.006407966
+2023/05/28 17:16:49 	cambi valute correnti: EUR/USD = 1.0986861, GBP/USD = 1.0482097, JPY/USD = 0.008523626
+2023/05/28 17:16:50 	cambi valute correnti: EUR/USD = 1.1791203, GBP/USD = 1.113889, JPY/USD = 0.00709438
+2023/05/28 17:16:51 	cambi valute correnti: EUR/USD = 1.2304968, GBP/USD = 1.170385, JPY/USD = 0.008257115
+2023/05/28 17:16:52 ACQUISTATI GBP/USD dal valore di 1.0482097
+2023/05/28 17:16:52 	cambi valute correnti: EUR/USD = 1.2795944, GBP/USD = 1.0292376, JPY/USD = 0.0089546265
+2023/05/28 17:16:53 	cambi valute correnti: EUR/USD = 1.3914111, GBP/USD = 1.1808289, JPY/USD = 0.008152075
+2023/05/28 17:16:54 	cambi valute correnti: EUR/USD = 1.4415332, GBP/USD = 1.3640448, JPY/USD = 0.007938985
+2023/05/28 17:16:55 ACQUISTATI GBP/USD dal valore di 1.0292376
+2023/05/28 17:16:55 	cambi valute correnti: EUR/USD = 1.1021636, GBP/USD = 1.0373666, JPY/USD = 0.008503059
+2023/05/28 17:16:56 	cambi valute correnti: EUR/USD = 1.0640742, GBP/USD = 1.2637594, JPY/USD = 0.0062469225
+2023/05/28 17:16:57 	cambi valute correnti: EUR/USD = 1.4595184, GBP/USD = 1.3394779, JPY/USD = 0.006463093
+2023/05/28 17:16:58 ACQUISTATI GBP/USD dal valore di 1.0373666
+2023/05/28 17:16:58 	cambi valute correnti: EUR/USD = 1.3339969, GBP/USD = 1.0632827, JPY/USD = 0.0075974315
+2023/05/28 17:16:59 	cambi valute correnti: EUR/USD = 1.3748628, GBP/USD = 1.2397245, JPY/USD = 0.0064807627
+2023/05/28 17:17:00 	cambi valute correnti: EUR/USD = 1.1265259, GBP/USD = 1.4988945, JPY/USD = 0.006678395
+2023/05/28 17:17:01 ACQUISTATI JPY/USD dal valore di 0.0075974315
+2023/05/28 17:17:01 	cambi valute correnti: EUR/USD = 1.360012, GBP/USD = 1.3278766, JPY/USD = 0.007559636
+2023/05/28 17:17:02 	cambi valute correnti: EUR/USD = 1.4275522, GBP/USD = 1.3879255, JPY/USD = 0.007710783
+2023/05/28 17:17:03 	cambi valute correnti: EUR/USD = 1.4252856, GBP/USD = 1.0999635, JPY/USD = 0.0063704294
+2023/05/28 17:17:04 ACQUISTATI JPY/USD dal valore di 0.007559636
+2023/05/28 17:17:04 	cambi valute correnti: EUR/USD = 1.402964, GBP/USD = 1.2821785, JPY/USD = 0.0064937556
+2023/05/28 17:17:05 	cambi valute correnti: EUR/USD = 1.3376377, GBP/USD = 1.0567845, JPY/USD = 0.008561776
+2023/05/28 17:17:06 	cambi valute correnti: EUR/USD = 1.4705496, GBP/USD = 1.0430784, JPY/USD = 0.006017899
+2023/05/28 17:17:07 ACQUISTATI JPY/USD dal valore di 0.0064937556
+2023/05/28 17:17:07 	cambi valute correnti: EUR/USD = 1.3135949, GBP/USD = 1.0924388, JPY/USD = 0.008615218
+2023/05/28 17:17:08 	cambi valute correnti: EUR/USD = 1.1896889, GBP/USD = 1.2271626, JPY/USD = 0.007314072
+2023/05/28 17:17:09 	cambi valute correnti: EUR/USD = 1.3838332, GBP/USD = 1.1859553, JPY/USD = 0.0089635635
+2023/05/28 17:17:10 	cambi valute correnti: EUR/USD = 1.2746558, GBP/USD = 1.0694026, JPY/USD = 0.008337241
+2023/05/28 17:17:11 VENDUTI EUR/USD dal valore di  1.3135949
+2023/05/28 17:17:11 	cambi valute correnti: EUR/USD = 1.0617746, GBP/USD = 1.3947043, JPY/USD = 0.007993767
+2023/05/28 17:17:12 	cambi valute correnti: EUR/USD = 1.4181266, GBP/USD = 1.3079457, JPY/USD = 0.008846561
+2023/05/28 17:17:13 	cambi valute correnti: EUR/USD = 1.3047338, GBP/USD = 1.0250438, JPY/USD = 0.008553812
+2023/05/28 17:17:14 ACQUISTATI JPY/USD dal valore di 0.007993767
+2023/05/28 17:17:14 	cambi valute correnti: EUR/USD = 1.1489575, GBP/USD = 1.0705942, JPY/USD = 0.006530786
+2023/05/28 17:17:15 	cambi valute correnti: EUR/USD = 1.0316505, GBP/USD = 1.0185449, JPY/USD = 0.007454509
+2023/05/28 17:17:16 	cambi valute correnti: EUR/USD = 1.2792473, GBP/USD = 1.4476086, JPY/USD = 0.008748325
+2023/05/28 17:17:17 ACQUISTATI GBP/USD dal valore di 1.0705942
+2023/05/28 17:17:17 	cambi valute correnti: EUR/USD = 1.0635916, GBP/USD = 1.0111102, JPY/USD = 0.008943157
+2023/05/28 17:17:18 	cambi valute correnti: EUR/USD = 1.3733578, GBP/USD = 1.1650856, JPY/USD = 0.006992888
+2023/05/28 17:17:19 	cambi valute correnti: EUR/USD = 1.3749101, GBP/USD = 1.4246812, JPY/USD = 0.007283292
+2023/05/28 17:17:20 ACQUISTATI GBP/USD dal valore di 1.0111102
+2023/05/28 17:17:20 	cambi valute correnti: EUR/USD = 1.0827874, GBP/USD = 1.0577636, JPY/USD = 0.00708981
+2023/05/28 17:17:21 	cambi valute correnti: EUR/USD = 1.4431722, GBP/USD = 1.4760121, JPY/USD = 0.008227829
+2023/05/28 17:17:22 	cambi valute correnti: EUR/USD = 1.156206, GBP/USD = 1.3657992, JPY/USD = 0.006294121
+2023/05/28 17:17:23 ACQUISTATI GBP/USD dal valore di 1.0577636
 #### FINE SIMULAZIONE ####
 ```

@@ -21,7 +21,7 @@ s
 il carattere 's' appare 3 volta/e
 ```
 
-## Homework 2 - car rental
+## Homework 2 - noleggio automobili
 Il programma genera una lista di clienti e associa casualmente ad ognuno di essi un tipo di veicolo tra tre tipologie: SUV, Berlina e Station Wagon. Successivamente il programma conta quanti veicoli sono stati noleggiati per ciascuna tipologia e stampa un resoconto finale.
 
 Al suo avvio, il programma genera una lista di 10 clienti. Successivamente, il programma avvia una goroutine che gestisce il noleggio dei veicoli e una che che conteggia i veicoli noleggiati per tipologia. La goroutine che gestisce il noleggio lancia, per ciascun cliente, una goroutine che associa casualmente un tipo di veicolo tra tre tipologie. Quando un veicolo viene noleggiato, il tipo di veicolo viene inviato ad un channel. La goroutine che conta i veicoli noleggiati estrae le tipologie di veicoli dal channel ed effettua il conteggio finché il channel non viene chiuso. Infine viene stampato un resoconto.

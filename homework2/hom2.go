@@ -44,12 +44,12 @@ func (cl *client) String() string {
 
 // gestisce il noleggio auto dei clienti passati
 func carRental(wg *sync.WaitGroup, data chan vehicleType, clients []client) {
-    var sellers sync.WaitGroup
+    var rentalAgents sync.WaitGroup
     for i := 0; i < len(clients); i++ {
-        sellers.Add(1)
-        go rent(&sellers, data, &clients[i])
+        rentalAgents.Add(1)
+        go rent(&rentalAgents, data, &clients[i])
     }
-    sellers.Wait()
+    rentalAgents.Wait()
     close(data)
     wg.Done()
 }
@@ -100,7 +100,3 @@ func main() {
     go carRental(&wg, data, clients)
     wg.Wait()
 }
-
-// cose da fare:
-// sellers o agents?
-// random tra 0 e 2 o 0 e 3?

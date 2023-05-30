@@ -39,5 +39,3 @@ func main() {
 
     fmt.Printf("il carattere '%c' appare %d volta/e\n", char[0], count)
 }
-
-// i caratteri speciali non funzionano

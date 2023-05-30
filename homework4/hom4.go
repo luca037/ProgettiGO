@@ -41,7 +41,7 @@ func randFloat32(min, max float32) float32 {
 // ogni secondo
 func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, done *atomic.Bool) {
     var senders sync.WaitGroup
-    var e_u, g_u, j_u float32  // valute correnti
+    var e_u, g_u, j_u float32  // valute correnti (nomi abbreviati)
 
     // inizio simulazione
     for i := 0; i < sec; i++ {
@@ -106,14 +106,3 @@ func main() {
     wg.Wait()
     fmt.Println("#### FINE SIMULAZIONE ####")
 }
-
-// da fixare:
-// simulare un possibile guadagno
-
-// fatti:
-// come chiudere correttamente la goroutine del select;
-// con i channel buffer si ha che i valori non sono mai aggiornati,
-// gli acquisti e le vendite non vengono effettuate con i valori più recenti;
-// controllare se questa variante funziona;
-// aggiungere un metodo per stampare le valute correnti;
-// camibiare nome struct e variabile 'valute'

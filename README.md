@@ -68,21 +68,21 @@ go run homework/hom3.go
 Un possibile output:
 ```
 #### INIZIO PRODUZIONE ####
-2023/05/25 10:40:53 Cuoco: Tiramisù è stata cucinata
-2023/05/25 10:40:54 Cuoco: Sacher è stata cucinata
-2023/05/25 10:40:55 Cuoco: Cheesecake è stata cucinata
-2023/05/25 10:40:55 Guarnitore: Tiramisù è stata guarnita
-2023/05/25 10:40:56 Cuoco: Crostata è stata cucinata
-2023/05/25 10:40:57 Cuoco: Meringata è stata cucinata
-2023/05/25 10:40:57 Guarnitore: Sacher è stata guarnita
-2023/05/25 10:40:59 Decoratore: Tiramisù è stata decorata
-2023/05/25 10:40:59 Guarnitore: Cheesecake è stata guarnita
-2023/05/25 10:41:01 Guarnitore: Crostata è stata guarnita
-2023/05/25 10:41:03 Guarnitore: Meringata è stata guarnita
-2023/05/25 10:41:03 Decoratore: Sacher è stata decorata
-2023/05/25 10:41:07 Decoratore: Cheesecake è stata decorata
-2023/05/25 10:41:11 Decoratore: Crostata è stata decorata
-2023/05/25 10:41:15 Decoratore: Meringata è stata decorata
+2023/05/31 13:13:00 Cuoco: Tiramisù è stata cucinata
+2023/05/31 13:13:01 Cuoco: Sacher è stata cucinata
+2023/05/31 13:13:02 Cuoco: Cheesecake è stata cucinata
+2023/05/31 13:13:03 Cuoco: Crostata è stata cucinata
+2023/05/31 13:13:04 Guarnitore: Tiramisù è stata guarnita
+2023/05/31 13:13:05 Cuoco: Meringata è stata cucinata
+2023/05/31 13:13:08 Guarnitore: Sacher è stata guarnita
+2023/05/31 13:13:12 Decoratore: Tiramisù è stata decorata
+2023/05/31 13:13:12 Guarnitore: Cheesecake è stata guarnita
+2023/05/31 13:13:16 Guarnitore: Crostata è stata guarnita
+2023/05/31 13:13:20 Decoratore: Sacher è stata decorata
+2023/05/31 13:13:20 Guarnitore: Meringata è stata guarnita
+2023/05/31 13:13:28 Decoratore: Cheesecake è stata decorata
+2023/05/31 13:13:36 Decoratore: Crostata è stata decorata
+2023/05/31 13:13:44 Decoratore: Meringata è stata decorata
 #### FINE PRODUZIONE ####
 ```
 

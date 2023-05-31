@@ -30,7 +30,7 @@ func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
 // guarnisce le torte passate da cook
 func garnish(wg *sync.WaitGroup, cooked <-chan *cake, garnished chan<- *cake) {
     for c := range(cooked) {
-        time.Sleep(2 * time.Second)
+        time.Sleep(4 * time.Second)
         c.isGarnished = true
         log.Printf("Guarnitore: %s è stata guarnita\n", c.name)
         garnished <- c
@@ -42,7 +42,7 @@ func garnish(wg *sync.WaitGroup, cooked <-chan *cake, garnished chan<- *cake) {
 // decora le torte passate da garnish
 func decorate(wg *sync.WaitGroup, toDecorate <-chan *cake) {
     for c := range(toDecorate) {
-        time.Sleep(4 * time.Second)
+        time.Sleep(8 * time.Second)
         c.isDecorated = true
         log.Printf("Decoratore: %s è stata decorata\n", c.name)
     }

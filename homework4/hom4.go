@@ -25,11 +25,11 @@ type marketCurrencies struct {
 // canale passato; se il channel non è vuoto, scarta l'ultimo valore inserito
 // per mantenere la valuta aggiornata; scrive il valore generato in res
 func generateCurrencie(wg *sync.WaitGroup, ch chan float32, min, max float32, res *float32) {
+    defer wg.Done()
     rnd := randFloat32(min, max)
     if len(ch) != 0 { <-ch }
     if res != nil { *res = rnd }
     ch <- rnd
-    wg.Done()
 }
 
 // random number generator nel range [min, max]
@@ -40,6 +40,7 @@ func randFloat32(min, max float32) float32 {
 // simula l'andamento di un mercato per tot secondi, le valute vengono aggiornate
 // ogni secondo
 func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, done *atomic.Bool) {
+    defer wg.Done()
     var senders sync.WaitGroup
     var e_u, g_u, j_u float32  // valute correnti (nomi abbreviati)
 
@@ -59,11 +60,11 @@ func simulateMarketData(wg *sync.WaitGroup, curr *marketCurrencies, sec int, don
     close(curr.eur_usd)
     close(curr.gbp_usd)
     close(curr.jpy_usd)
-    wg.Done()
 }
 
 // cattura le variazioni di prezzo e decide se vendere o acquistare
 func selectPair(wg *sync.WaitGroup, curr *marketCurrencies, done *atomic.Bool) {
+    defer wg.Done()
     for !done.Load() {
         select {
         case x := <-curr.eur_usd:
@@ -83,7 +84,6 @@ func selectPair(wg *sync.WaitGroup, curr *marketCurrencies, done *atomic.Bool) {
             }
         }
     }
-    wg.Done()
 }
 
 func main() {

@@ -13,10 +13,10 @@ func char_count(word string, c byte, res chan<- int) {
     for i := range(word) {
         wg.Add(1)
         go func(x byte) {
+            defer wg.Done()
             if x == c {
                 ch <- 1
             }
-            wg.Done()
         }(word[i])
     }
     wg.Wait()

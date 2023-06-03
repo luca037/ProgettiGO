@@ -17,6 +17,7 @@ type cake struct {
 
 // cucina le torte passate
 func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
+    defer wg.Done()
     for i := range(cakes) {
         time.Sleep(time.Second)
         cakes[i].isCooked = true
@@ -24,11 +25,11 @@ func cook(wg *sync.WaitGroup, cooked chan<- *cake, cakes []cake) {
         cooked <- &cakes[i]
     }
     close(cooked)
-    wg.Done()
 }
 
 // guarnisce le torte passate da cook
 func garnish(wg *sync.WaitGroup, cooked <-chan *cake, garnished chan<- *cake) {
+    defer wg.Done()
     for c := range(cooked) {
         time.Sleep(4 * time.Second)
         c.isGarnished = true
@@ -36,17 +37,16 @@ func garnish(wg *sync.WaitGroup, cooked <-chan *cake, garnished chan<- *cake) {
         garnished <- c
     }
     close(garnished)
-    wg.Done()
 }
 
 // decora le torte passate da garnish
 func decorate(wg *sync.WaitGroup, toDecorate <-chan *cake) {
+    defer wg.Done()
     for c := range(toDecorate) {
         time.Sleep(8 * time.Second)
         c.isDecorated = true
         log.Printf("Decoratore: %s è stata decorata\n", c.name)
     }
-    wg.Done()
 }
 
 func main() {

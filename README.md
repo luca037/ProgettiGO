@@ -1,6 +1,11 @@
 # Progetti in Go
 Progetti (homework) assegnati da scrivere in Go.
 
+In tutti i progrmmi è possibile generare la documentazione nel seguente modo:
+```bash
+go doc -all homework/<nome-file>.go
+```
+
 ## Homework 1 - conta caratteri in una stringa
 Il programma chiede in input all'utente una stringa e un carattere, in output verrà restituito il numero di volte in cui appare tale carattere nella parola.
 
@@ -22,9 +27,9 @@ il carattere 's' appare 3 volta/e
 ```
 
 ## Homework 2 - noleggio automobili
-Il programma genera una lista di clienti e associa casualmente ad ognuno di essi un tipo di veicolo tra tre tipologie: SUV, Berlina e Station Wagon. Successivamente il programma conta quanti veicoli sono stati noleggiati per ciascuna tipologia e stampa un resoconto finale.
+Il programma genera una lista di clienti e associa casualmente ad ognuno di essi un tipo di veicolo tra tre tipologie: `SUV`, `Berlina` e `Station Wagon`. Successivamente il programma conta quanti veicoli sono stati noleggiati per ciascuna tipologia e stampa un resoconto finale.
 
-Al suo avvio, il programma genera una lista di 10 clienti. Successivamente, il programma avvia una goroutine che gestisce il noleggio dei veicoli e una che che conteggia i veicoli noleggiati per tipologia. La goroutine che gestisce il noleggio lancia, per ciascun cliente, una goroutine che associa casualmente un tipo di veicolo tra tre tipologie. Quando un veicolo viene noleggiato, il tipo di veicolo viene inviato ad un channel. La goroutine che conta i veicoli noleggiati estrae le tipologie di veicoli dal channel ed effettua il conteggio finché il channel non viene chiuso. Infine viene stampato un resoconto.
+Al suo avvio, il programma genera una lista di 10 clienti, dopodiché avvia una goroutine che gestisce il noleggio dei veicoli e una che che conteggia i veicoli noleggiati per tipologia. La goroutine che gestisce il noleggio lancia, per ciascun cliente, una goroutine che associa casualmente un tipo di veicolo tra tre tipologie. Quando un veicolo viene noleggiato, il tipo di veicolo viene inviato ad un channel. La goroutine che conta i veicoli noleggiati estrae le tipologie di veicoli dal channel ed effettua il conteggio finché il channel non viene chiuso. Infine viene stampato un resoconto.
 
 Per eseguire il programma:
 ```bash
@@ -87,7 +92,7 @@ Un possibile output:
 ```
 
 ## Homework 4 - simulazione mercato valutario
-Questo programma simula l'andamento di un mercato valutario, generando delle variazioni di prezzo per le coppie di valute EUR/USD, GBP/USD e JPY/USD in maniera casuale e inviandole attraverso appositi canali.
+Questo programma simula l'andamento di un mercato valutario, generando delle variazioni di prezzo per le coppie di valute `EUR/USD`, `GBP/USD` e `JPY/USD` in maniera casuale e inviandole attraverso appositi canali.
 
 Una goroutine si occupa di generare le variazioni di prezzo per le coppie di valute, un'altra goroutine si occupa di catturare tali variazioni e di acquistare/vendere le valute in base ad alcuni criteri specificati.
 

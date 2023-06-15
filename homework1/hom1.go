@@ -13,7 +13,7 @@ func CharCount(word string, c byte, res chan<- int) {
 	var wg sync.WaitGroup
 	ch := make(chan byte, len(word))
 
-	// controllo caratteri in parallelo
+	// controllo caratteri
 	for i := range word {
 		wg.Add(1)
 		go func(x byte) {

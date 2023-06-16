@@ -17,9 +17,38 @@ const sellTresholdEurUsd float32 = 1.20
 const buyTresholdGbpUsd float32 = 1.35
 const buyTresholdJpyUsd float32 = 0.0085
 
-// Valute di un mercato azionario.
+// Valute di un mercato valutario.
 type MarketCurrencies struct {
 	EurUsd, GbpUsd, JpyUsd chan float32
+}
+
+// Simula l'andamento di un mercato per tot secondi, le valute vengono aggiornate
+// con un valore randomico ad ogni secondo.
+// wg viene utilizzato per sincronizzare la go routine.
+// curr contiene le valute del mercato valutario.
+// sec indica la durata della simulazione in secondi.
+// done viene utilizzata per comunicare che la simulazione è terminata.
+func SimulateMarketData(wg *sync.WaitGroup, curr *MarketCurrencies, sec int, done *atomic.Bool) {
+	defer wg.Done()
+	var senders sync.WaitGroup
+	var e_u, g_u, j_u float32 // valute correnti (nomi abbreviati)
+
+	// inizio simulazione
+	for i := 0; i < sec; i++ {
+		senders.Add(3)
+		go generateCurrencie(&senders, curr.EurUsd, 1.0, 1.5, &e_u)
+		go generateCurrencie(&senders, curr.GbpUsd, 1.0, 1.5, &g_u)
+		go generateCurrencie(&senders, curr.JpyUsd, 0.006, 0.009, &j_u)
+		senders.Wait()
+		time.Sleep(time.Second)
+		log.Printf("\tcambi valute correnti: EUR/USD = %v, GBP/USD = %v, JPY/USD = %v", e_u, g_u, j_u)
+	}
+
+	// chiudo la ricezione
+	done.Store(true)
+	close(curr.EurUsd)
+	close(curr.GbpUsd)
+	close(curr.JpyUsd)
 }
 
 // Genera un cambio di valuta randomico nel range [min, max] e lo invia nel
@@ -47,35 +76,6 @@ func generateCurrencie(wg *sync.WaitGroup, ch chan float32, min, max float32, re
 // Genera un numero random nel range [min, max].
 func randFloat32(min, max float32) float32 {
 	return min + rand.Float32()*(max-min)
-}
-
-// Simula l'andamento di un mercato per tot secondi, le valute vengono aggiornate
-// con un valore randomico ad ogni secondo.
-// wg viene utilizzato per sincronizzare la go routine.
-// curr contiene le valute del mercato azionario.
-// sec indica la durata della simulazione in secondi.
-// done viene utilizzata per comunicare che la simulazione è terminata.
-func SimulateMarketData(wg *sync.WaitGroup, curr *MarketCurrencies, sec int, done *atomic.Bool) {
-	defer wg.Done()
-	var senders sync.WaitGroup
-	var e_u, g_u, j_u float32 // valute correnti (nomi abbreviati)
-
-	// inizio simulazione
-	for i := 0; i < sec; i++ {
-		senders.Add(3)
-		go generateCurrencie(&senders, curr.EurUsd, 1.0, 1.5, &e_u)
-		go generateCurrencie(&senders, curr.GbpUsd, 1.0, 1.5, &g_u)
-		go generateCurrencie(&senders, curr.JpyUsd, 0.006, 0.009, &j_u)
-		senders.Wait()
-		time.Sleep(time.Second)
-		log.Printf("\tcambi valute correnti: EUR/USD = %v, GBP/USD = %v, JPY/USD = %v", e_u, g_u, j_u)
-	}
-
-	// chiudo la ricezione
-	done.Store(true)
-	close(curr.EurUsd)
-	close(curr.GbpUsd)
-	close(curr.JpyUsd)
 }
 
 // Cattura le variazioni di mercato delle valute.

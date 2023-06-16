@@ -50,7 +50,7 @@ func Garnish(wg *sync.WaitGroup, cooked <-chan *Cake, garnished chan<- *Cake) {
 // garnished è il cananle da cui preleva le torte da decorare.
 func Decorate(wg *sync.WaitGroup, garnished <-chan *Cake) {
 	defer wg.Done()
-	for c := range garnished{
+	for c := range garnished {
 		time.Sleep(8 * time.Second)
 		c.IsDecorated = true
 		log.Printf("Decoratore: %s è stata decorata\n", c.Name)

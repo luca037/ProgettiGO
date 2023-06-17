@@ -45,7 +45,7 @@ func Garnish(wg *sync.WaitGroup, cooked <-chan *Cake, garnished chan<- *Cake) {
 	close(garnished)
 }
 
-// Mansione che svolge il farcitore
+// Mansione che svolge il decoratore.
 // wg utilizzato per sincronizzare la go routine.
 // garnished è il cananle da cui preleva le torte da decorare.
 func Decorate(wg *sync.WaitGroup, garnished <-chan *Cake) {

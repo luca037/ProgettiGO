@@ -16,7 +16,6 @@ type Client struct {
 // Stampa le informazioni relative ad un cliente: nome e tipo di veicolo nollegiato.
 func (cl *Client) String() string {
 	var ctn string // car type name
-
 	switch cl.Car.Vt {
 	case SUV:
 		ctn = "SUV"
@@ -27,7 +26,6 @@ func (cl *Client) String() string {
 	default:
 		ctn = ""
 	}
-
 	return fmt.Sprintf("name: %s, ha noleggiato un veicolo di tipo: %s", cl.Name, ctn)
 }
 

@@ -18,10 +18,10 @@ go run homework/hom1.go
 Un possbile output:
 ```
 inserire una parola:
-thisisatest
+this is a test
 inserire un carattere:
-s
-il carattere 's' appare 3 volta/e
+t
+il carattere 't', appare 3 volta/e
 ```
 
 ## Homework 2 - noleggio automobili

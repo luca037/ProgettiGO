@@ -109,8 +109,8 @@ func SelectPair(wg *sync.WaitGroup, curr *MarketCurrencies, done *atomic.Bool) {
 func main() {
 	rand.Seed(time.Now().UnixNano()) // per la randomicità
 
-	var done atomic.Bool // per far terminare il thread selectPair
-	done.Store(false)
+	var done atomic.Bool // utilizzao per far terminare SelectPair
+	done.Store(false)    // viene settato a true quando la simulazione è terminata
 
 	curr := MarketCurrencies{
 		EurUsd: make(chan float32, 1),

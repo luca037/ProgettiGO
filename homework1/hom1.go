@@ -1,17 +1,19 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"sync"
 )
 
 // Conta quante volte un carattere è presente in una parola.
 // word è la parola da analizzare.
 // c è il carattere utilizzato per il conteggio.
-// res è il canale in cui viene inviato il risultato.
+// res è il canale in cui viene inviato il risultato del conteggio.
 func CharCount(word string, c byte, res chan<- int) {
 	var wg sync.WaitGroup
-	ch := make(chan byte, len(word))
+	count := make(chan byte, len(word))
 
 	// controllo caratteri
 	for i := range word {
@@ -19,29 +21,29 @@ func CharCount(word string, c byte, res chan<- int) {
 		go func(x byte) {
 			defer wg.Done()
 			if x == c {
-				ch <- 1
+				count <- 1
 			}
 		}(word[i])
 	}
 
 	wg.Wait()
-	close(ch)
+	close(count)
 
-	res <- len(ch)
+	res <- len(count)
 }
 
 func main() {
-	var word string
+	in := bufio.NewReader(os.Stdin)
+
 	fmt.Println("inserire una parola:")
-	fmt.Scanln(&word)
+	word, _ := in.ReadString('\n')
 
-	var char []byte
 	fmt.Println("inserire un carattere:")
-	fmt.Scanln(&char)
+	char, _ := in.ReadByte()
 
-	res := make(chan int)
-	go CharCount(word, char[0], res)
+	res := make(chan int) // canale in cui viene passato il conteggio
+	go CharCount(word, char, res)
 	count := <-res
 
-	fmt.Printf("il carattere '%c' appare %d volta/e\n", char[0], count)
+	fmt.Printf("il carattere '%c', appare %d volta/e\n", char, count)
 }

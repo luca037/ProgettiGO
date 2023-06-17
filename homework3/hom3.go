@@ -24,8 +24,8 @@ func Cook(wg *sync.WaitGroup, cooked chan<- *Cake, cakes []Cake) {
 	for i := range cakes {
 		time.Sleep(time.Second)
 		cakes[i].IsCooked = true
-		log.Printf("Cuoco: %s è stata cucinata\n", cakes[i].Name)
 		cooked <- &cakes[i]
+		log.Printf("Cuoco: %s è stata cucinata\n", cakes[i].Name)
 	}
 	close(cooked)
 }
@@ -36,11 +36,11 @@ func Cook(wg *sync.WaitGroup, cooked chan<- *Cake, cakes []Cake) {
 // garnished è il canale in cui vengono inserite le torte decorate.
 func Garnish(wg *sync.WaitGroup, cooked <-chan *Cake, garnished chan<- *Cake) {
 	defer wg.Done()
-	for c := range cooked {
+	for cake := range cooked {
 		time.Sleep(4 * time.Second)
-		c.IsGarnished = true
-		log.Printf("Guarnitore: %s è stata guarnita\n", c.Name)
-		garnished <- c
+		cake.IsGarnished = true
+		garnished <- cake
+		log.Printf("Guarnitore: %s è stata guarnita\n", cake.Name)
 	}
 	close(garnished)
 }
@@ -50,10 +50,10 @@ func Garnish(wg *sync.WaitGroup, cooked <-chan *Cake, garnished chan<- *Cake) {
 // garnished è il cananle da cui preleva le torte da decorare.
 func Decorate(wg *sync.WaitGroup, garnished <-chan *Cake) {
 	defer wg.Done()
-	for c := range garnished {
+	for cake := range garnished {
 		time.Sleep(8 * time.Second)
-		c.IsDecorated = true
-		log.Printf("Decoratore: %s è stata decorata\n", c.Name)
+		cake.IsDecorated = true
+		log.Printf("Decoratore: %s è stata decorata\n", cake.Name)
 	}
 }
 

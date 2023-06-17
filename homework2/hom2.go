@@ -45,13 +45,12 @@ const (
 
 // Gestisce il nolleggio di veicoli di un concessionario: ad ogni cliente viene
 // associata una tipologia di veicolo in maniera randomica.
-// veicolo random le tipologie disponibili ai clienti passati.
 // wg viene utilizzato per sincronizzare la go rouitine.
 // data è canale in cui vengono inviate le tipologie di veicoli che sono state
 // assegnate al cliente.
 // clients sono i clienti a cui vengono associati randomicamente le tiopologie di
 // veicoli.
-func CarRental(wg *sync.WaitGroup, data chan VehicleType, clients []Client) {
+func CarRental(wg *sync.WaitGroup, data chan<- VehicleType, clients []Client) {
 	defer wg.Done()
 
 	var rentalAgents sync.WaitGroup
@@ -69,9 +68,9 @@ func setRandomVehicleType(wg *sync.WaitGroup, data chan<- VehicleType, cl *Clien
 
 	rnd := rand.Intn(3) // random tra [0, 3[
 	cl.Car = Vehicle{Vt: VehicleType(rnd)}
-	data <- cl.Car.Vt
+	data <- cl.Car.Vt // passo la tipologia per il conteggio
 
-	fmt.Println(cl)
+	fmt.Println(cl) // stampo info cliente
 }
 
 // Conteggia le tipologie di veicoli che sono stati nollegiati e stampa il resoconto
@@ -82,8 +81,8 @@ func CountVehicleTypes(wg *sync.WaitGroup, data <-chan VehicleType) {
 	defer wg.Done()
 
 	s, b, sw := 0, 0, 0 // contatori
-	for i := range data {
-		switch i { // filtra in base al tipo di veicolo
+	for vt := range data {
+		switch vt { // filtra in base al tipo di veicolo
 		case SUV:
 			s++
 		case Berlina:
@@ -108,7 +107,7 @@ func main() {
 		clients[i].Name = string('A' + i)
 	}
 
-	data := make(chan VehicleType, 10) // per i nolleggi
+	data := make(chan VehicleType, 10) // per il conteggio dei veicoli nollegiati
 
 	var wg sync.WaitGroup
 	wg.Add(2)
